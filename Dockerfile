@@ -1,14 +1,13 @@
-# Use lightweight Java 17 image
+# Stage 1: Build
+FROM maven:3.9.2-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run
 FROM openjdk:17-jdk-slim
-
-# Set working directory
-WORKDIR /applylog
-
-# Copy the JAR from target (after Maven build)
-COPY target/*.jar applylog.jar
-
-# Expose the app port
+WORKDIR /app
+COPY --from=build /app/target/*.jar applylog.jar
 EXPOSE 8080
-
-# Run the app
 ENTRYPOINT ["java", "-jar", "applylog.jar"]
