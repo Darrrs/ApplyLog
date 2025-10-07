@@ -1,0 +1,14 @@
+# Use lightweight Java 17 image
+FROM openjdk:17-jdk-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR from target (after Maven build)
+COPY target/*.jar applylog.jar
+
+# Expose the app port
+EXPOSE 8080
+
+# Run the app
+ENTRYPOINT ["java", "-jar", "applylog.jar"]
