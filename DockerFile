@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-slim
 
 # Set working directory
-WORKDIR /app
+WORKDIR /applylog
 
 # Copy the JAR from target (after Maven build)
 COPY target/*.jar applylog.jar
