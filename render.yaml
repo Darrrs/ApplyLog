@@ -1,31 +1,21 @@
 services:
   - type: web
-    name: applylog-backend
+    name: applylog
     env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    branch: main
     envVars:
-      - key: SPRING_DATASOURCE_URL
-        fromDatabase:
-          name: applylog-db
-          property: connectionString
-      - key: SPRING_DATASOURCE_USERNAME
-        fromDatabase:
-          name: applylog-db
-          property: user
-      - key: SPRING_DATASOURCE_PASSWORD
-        fromDatabase:
-          name: applylog-db
-          property: password
-      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
-        value: update
-      - key: SPRING_JPA_SHOW_SQL
-        value: "true"
+      - key: MYSQLHOST
+        value: mysql.railway.internal
+      - key: MYSQLPORT
+        value: "3306"
+      - key: MYSQLUSER
+        value: root
+      - key: MYSQLPASSWORD
+        value: ywSdlfmMMIHAPTlnZxvEYaUYbBmdcrqp
+      - key: MYSQLDATABASE
+        value: railway
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: PORT
-        value: 8080
 
-databases:
-  - name: applylog-db
-    plan: free
