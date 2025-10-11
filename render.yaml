@@ -6,18 +6,11 @@ services:
     autoDeploy: true
     branch: main
     envVars:
-      - key: MYSQLHOST
-        value: mysql.railway.internal
-      - key: MYSQLPORT
-        value: "3306"
-      - key: MYSQLUSER
+      - key: DB_URL
+        value: jdbc:mysql://mysql.railway.internal:3306/railway
+      - key: DB_USERNAME
         value: root
-      - key: MYSQLPASSWORD
+      - key: DB_PASSWORD
         value: ywSdlfmMMIHAPTlnZxvEYaUYbBmdcrqp
-      - key: MYSQLDATABASE
-        value: railway
-      - key: SPRING_PROFILES_ACTIVE
-        value: prod
       - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
         value: com.mysql.cj.jdbc.Driver
-
