@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: applylog
+    env: docker
+    plan: free
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: MYSQLHOST
+        value: mysql.railway.internal
+      - key: MYSQLPORT
+        value: "3306"
+      - key: MYSQLUSER
+        value: root
+      - key: MYSQLPASSWORD
+        value: ywSdlfmMMIHAPTlnZxvEYaUYbBmdcrqp
+      - key: MYSQLDATABASE
+        value: railway
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: com.mysql.cj.jdbc.Driver
+
